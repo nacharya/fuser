@@ -1095,7 +1095,7 @@ impl Filesystem for SimpleFS {
         name: &OsStr,
         new_parent: u64,
         new_name: &OsStr,
-        flags: u32,
+        _flags: u32,
         reply: ReplyEmpty,
     ) {
         let mut inode_attrs = match self.lookup_name(parent, name) {
@@ -1921,7 +1921,7 @@ fn as_file_kind(mut mode: u32) -> FileKind {
     }
 }
 
-fn get_groups(pid: u32) -> Vec<u32> {
+fn get_groups(_pid: u32) -> Vec<u32> {
     #[cfg(not(target_os = "macos"))]
     {
         let path = format!("/proc/{pid}/task/{pid}/status");

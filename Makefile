@@ -49,3 +49,13 @@ mount_tests:
 
 test: pre mount_tests pjdfs_tests xfstests
 	cargo test
+
+macfix:
+	cargo clippy --fix --example "simple" --allow-staged --allow-dirty
+	#cargo clippy --fix --test "integration_tests" --allow-staged --allow-dirty
+macbuild:
+	cargo build --example hello
+	cargo build --example simple 
+
+clean:
+	cargo clean
